@@ -27,5 +27,15 @@ program
     })
   });
 
+var os = require('os')
+
+program
+  .command('sysinfo')
+  .action(function() {
+    console.log("System info for '%s':", os.hostname());
+    console.log("Platform: %s, Architecture: %s", os.platform(), os.arch());
+    console.log("Uptime: %s, Free memory: %sMB", os.uptime(), os.freemem()/1000000);
+  });
+
 program.parse(process.argv);
 
