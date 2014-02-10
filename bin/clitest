@@ -6,10 +6,15 @@ program
   .version('0.0.1')
 
 program
+  .description('Say hi to someone')
+  .option('-w, --who [name]', 'Specify who to say hello to')
+
+program
   .command('hello')
-  .description('Say hi to everyone')
   .action(function(){
-    console.log('Hello World!');
+    var who = program.who || "World";
+    console.log('Hello %s!', program.who);
   });
 
 program.parse(process.argv);
+
