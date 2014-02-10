@@ -1,14 +1,18 @@
 #!/usr/bin/env node
 
+//Require 'Commander.js' module for argument parsing
 var program = require('commander');
 
+//Define program version
 program
   .version('0.0.1')
 
+//Program description and optional flag definition
 program
   .description('Say hi to someone')
   .option('-w, --who [name]', 'Specify who to say hello to')
 
+//The 'hello' command
 program
   .command('hello')
   .action(function(){
@@ -16,8 +20,10 @@ program
     console.log('Hello %s!', program.who);
   });
 
+//Require 'Filesystem' module for filesystem operations
 var fs = require('fs')
 
+//'readfile' command reads contents of a file and spits it out
 program
   .command('readfile <filename>')
   .action(function(filename) {
@@ -27,8 +33,11 @@ program
     })
   });
 
+
+//Require 'OS' module for OS operations
 var os = require('os')
 
+//'sysinfo' command spits out various system info
 program
   .command('sysinfo')
   .action(function() {
