@@ -16,5 +16,16 @@ program
     console.log('Hello %s!', program.who);
   });
 
+var fs = require('fs')
+
+program
+  .command('readfile <filename>')
+  .action(function(filename) {
+    var myFile = fs.readFile(filename, function(err, data) {
+      if(err) throw err;
+      console.log("File contents: %s", data);
+    })
+  });
+
 program.parse(process.argv);
 
